@@ -1,12 +1,12 @@
 
 function __set_one_edge_of_map(map, from, to, line) {
-  map[ from ][ to ].value = 1;
-  map[ from ][ to ].line.push(line);
+  map[ from ][ to ].value = 1
+  map[ from ][ to ].line.push(line)
 }
 
 // Use this for give each site a number order
-var all_site_list = []; // [{name:'车公庙', line: [1,7,9,11]}, {}]
-var all_site_index = {}; // ['车公庙': 0, '福田': 1]
+var all_site_list = [] // [{name:'车公庙', line: [1,7,9,11]}, {}]
+var all_site_index = {} // ['车公庙': 0, '福田': 1]
 
 /**
  * Get a matrix about each site‘s connection
@@ -19,11 +19,11 @@ function build_map(all_line) {
       if( all_site[site] ) {
         all_site[site].push( line.name )
       } else{
-        all_site[site] = [ line.name ];
+        all_site[site] = [ line.name ]
 
-        all_site_index[site] = all_site_list.length;
+        all_site_index[site] = all_site_list.length
         // given the key(line) a array ref
-        all_site_list.push( {name: site, line: all_site[site]} );
+        all_site_list.push( {name: site, line: all_site[site]} )
       }
     })
   })
