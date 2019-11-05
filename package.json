@@ -1,0 +1,31 @@
+{
+  "name": "subway",
+  "version": "0.1.0",
+  "description": "Shortest path",
+  "author": "Chang Zhi",
+  "license": "MIT",
+  "main": "index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/changzhiwin/subway.git"
+  },
+  "typings": "types/index.d.ts",
+  "files": [
+    "src/*.mjs"
+  ],
+  "keywords": [
+    "地铁",
+    "Dijkstra",
+    "最短路径"
+  ],
+  "scripts": {
+    "test": "node --experimental-modules index.mjs"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "bugs": {
+    "url": "https://github.com/changzhiwin/subway/issues"
+  },
+  "homepage": "https://github.com/changzhiwin/subway#readme"
+}
