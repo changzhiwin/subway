@@ -20,6 +20,6 @@ const all_lines = [
 ];
 
 // 这里假设换乘消耗为：一个站点
-const C_TRANSFER_COST = 1;
+const C_TRANSFER_COST = 2;
 
 export {all_lines, C_TRANSFER_COST};

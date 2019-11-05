@@ -12,7 +12,7 @@ export function dijkstra(from, to, name_2_index, map) {
   // first start point, init distance array and mark_used array
   for(let i = 0; i < arr_of_start.length; i++) {
     let cost = {value: Number.MAX_VALUE, from: prev_site_idx, line: [], on: [], transfer: 0}
-    let used = false;
+    let used = (i === from_idx)
 
     cost.value = arr_of_start[ i ].value
     cost.line = arr_of_start[ i ].line // need record which line have
@@ -23,10 +23,6 @@ export function dijkstra(from, to, name_2_index, map) {
         cost.on.push(l) // 如果有同一条线路，说明这条线路可以到达i
       }
     })
-
-    if (i === from_idx) {
-      used = true
-    }
 
     distance.push(cost)
     mark_used.push(used)
@@ -65,13 +61,20 @@ export function dijkstra(from, to, name_2_index, map) {
           can_on = temp_arr[i].line.slice()
           adder = C_TRANSFER_COST // 增加换乘消耗
         }
-        
+
+        /**
+         * 这种算法有bug，case如下：
+         * 9, 红岭北, value(11), prev(泥岗)
+         * 7, 笋岗, value(14), prev(红岭北)
+         * 这种情况，换乘的成本放到了换乘站的下一站；导致计算错误
+         * 想了想，只能切换为换乘虚拟站点方案（2019-11-05 22:05:14）
+         */
         if (distance[i].value > (adder + min_idx.value + temp_arr[i].value) ) {
           distance[i].value = adder + min_idx.value + temp_arr[i].value;
           distance[i].from = prev_site_idx; // find a shortest path, update prev_node
           distance[i].on = can_on;
 
-          distance[i].transfer = need_transfer ? 1:0 // 这个站点变线了，说明是上一个站点发起的
+          distance[i].transfer = need_transfer ? 1:0 
         }
       }
     }
@@ -89,5 +92,5 @@ export function dijkstra(from, to, name_2_index, map) {
     {idx: mid_node, on: distance[mid_node].on, transfer: distance[mid_node].transfer}
   );
 
-  return {value: distance[to_idx].value, path: solve_path};
+  return {value: distance[to_idx].value, path: solve_path, distance: distance};
 }
