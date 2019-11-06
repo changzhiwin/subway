@@ -9,17 +9,18 @@ const line9 = ["红树湾南", "深湾", "深圳湾公园", "下沙", "车公庙
 const line11 = ["福田", "车公庙", "红树湾南", "后海", "南山", "前海湾", "宝安", "碧海湾", "机场", "机场北", "福永", "桥头", "塘尾", "马安山", "沙井", "后亭", "松岗", "碧头"];
 
 const all_lines = [ 
-  {name:'1', path:line1}, 
-  {name:'2', path:line2}, 
-  {name:'3', path:line3}, 
-  {name:'4', path:line4}, 
-  {name:'5', path:line5}, 
-  {name:'7', path:line7}, 
-  {name:'9', path:line9}, 
-  {name:'11', path:line11} 
+  {no:'1', path:line1}, 
+  {no:'2', path:line2}, 
+  {no:'3', path:line3}, 
+  {no:'4', path:line4}, 
+  {no:'5', path:line5}, 
+  {no:'7', path:line7}, 
+  {no:'9', path:line9}, 
+  {no:'11', path:line11} 
 ];
 
-// 这里假设换乘消耗为：一个站点
-const C_TRANSFER_COST = 2;
+//换乘消耗
+const C_TRANSFER_SITE_COST = 2;
+const C_THROUGH_SITE_COST = 1;
 
-export {all_lines, C_TRANSFER_COST};
+export {all_lines, C_TRANSFER_SITE_COST, C_THROUGH_SITE_COST};
